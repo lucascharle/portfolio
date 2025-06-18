@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV Lucas Charlé</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="https://github.com/lucascharle/portfolio/blob/main/LOGO_UIMM_QUADRI.svg.png?raw=true" type="image/png" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #e8e8e8, #f5f5f5);
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    h1, h4 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #c62828;
+    }
+
+    h4 {
+      font-size: 1.8em;
+      color: #444;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .logo-container img {
+      max-width: 120px;
+      height: auto;
+    }
+
+    .content {
+      background-color: #fff;
+      padding: 40px;
+      margin: 30px auto;
+      border-radius: 15px;
+      max-width: 1000px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    p {
+      font-size: 1.15em;
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    /* Compétences en badges */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .skill-badge {
+      background-color: #e0e0e0;
+      color: #333;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: 0.3s ease;
+      font-size: 1.1em;
+    }
+
+    .skill-badge:hover {
+      background-color: #c62828;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* Carousel */
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      max-width: 900px;
+      margin: 40px auto;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel-images {
+      display: flex;
+      transition: transform 0.6s ease;
+    }
+
+    .carousel-images img {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+    }
+
+    .arrow-left {
+      left: 15px;
+    }
+
+    .arrow-right {
+      right: 15px;
+    }
+
+    .dots {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .dot {
+      height: 12px;
+      width: 12px;
+      margin: 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .active {
+      background-color: #333;
+    }
+
+    /* Lien vers UIMM */
+    .link-button {
+      display: inline-block;
+      margin: 30px auto;
+      text-align: center;
+      font-weight: bold;
+      padding: 15px 30px;
+      background-color: #424242;
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .link-button:hover {
+      background-color: #212121;
+      transform: scale(1.05);
+    }
+
+    /* Formulaire de contact */
+    .contact-form-container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      max-width: 600px;
+      margin: 50px auto;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form h2 {
+      margin-bottom: 20px;
+      color: #c62828;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 500;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    .contact-form button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #c62828;
+      color: white;
+      border: none;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: #a91e1e;
+    }
+
+    .contact-info {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 1.1em;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="logo-container">
+    <img src="https://github.com/lucascharle/portfolio/blob/main/LOGO_UIMM_QUADRI.svg.png?raw=true" alt="Logo UIMM" />
+  </div>
+
+  <h1>Lucas Charlé</h1>
+
+  <div class="content">
+    <h4>À propos de moi</h4>
+    <p>Je suis une personne bienveillante et à l’écoute des autres. Je suis passionné par les nouvelles technologies et la cybersécurité. Toujours motivé à apprendre et à évoluer, je me forme chaque jour pour devenir un professionnel qualifié dans mon domaine.</p>
+  </div>
+
+  <div class="content">
+    <h4>Expérience</h4>
+    <p>Lors de cette expérience, l’objectif était de simuler une attaque par force brute. Une attaque par force brute consiste à tester toutes les combinaisons possibles pour deviner un mot de passe. Nous avons utilisé un script Python qui a testé automatiquement des combinaisons jusqu’à trouver le mot de passe "secret123". Cette simulation m’a permis de mieux comprendre les enjeux de sécurité informatique.</p>
+  </div>
+
+  <div class="content">
+    <h4>Compétences</h4>
+    <div class="skills">
+      <span class="skill-badge">Sérieux</span>
+      <span class="skill-badge">Motivé</span>
+      <span class="skill-badge">À l'écoute</span>
+      <span class="skill-badge">Déterminé</span>
+    </div>
+  </div>
+
+  <div class="carousel-container">
+    <div class="carousel-images">
+      <img src="https://uimm.lafabriquedelavenir.fr/wp-content/uploads/2018/08/HeaderSite-1920x1080-2.png" alt="UIMM 1" />
+      <img src="https://uimm.lafabriquedelavenir.fr/wp-content/themes/uimm/assets/img/tiers1.jpg" alt="UIMM 2" />
+      <img src="https://www.formation-industrie.bzh/images/medias/Manager_dequipe_industrielle_2_AdobeStock_388012616.jpeg" alt="UIMM 3" />
+      <img src="https://www.fabacademy-pdl.fr/sites/fab_academy/files/styles/w1920_extra_wide/public/media/images/Img092%20-AFPI-%20Chaudronnerie%20%C2%A9ymla44.jpg?itok=RYKdpOzI" alt="UIMM 4" />
+    </div>
+    <button class="arrow arrow-left">&#10094;</button>
+    <button class="arrow arrow-right">&#10095;</button>
+    <div class="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <script>
+    const carouselImages = document.querySelector('.carousel-images');
+    const images = document.querySelectorAll('.carousel-images img');
+    const dots = document.querySelectorAll('.dot');
+    const arrowLeft = document.querySelector('.arrow-left');
+    const arrowRight = document.querySelector('.arrow-right');
+    let index = 0;
+
+    function updateCarousel() {
+      carouselImages.style.transform = `translateX(${-index * 100}%)`;
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+    }
+
+    arrowRight.addEventListener('click', () => {
+      index = (index + 1) % images.length;
+      updateCarousel();
+    });
+
+    arrowLeft.addEventListener('click', () => {
+      index = (index - 1 + images.length) % images.length;
+      updateCarousel();
+    });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        index = i;
+        updateCarousel();
+      });
+    });
+  </script>
+
+  <p style="text-align: center;">
+    <a class="link-button" href="https://formation-industries-ca.fr/" target="_blank">Centre de formation UIMM</a>
+  </p>
+
+  <div class="contact-form-container">
+    <form class="contact-form" action="#" method="post">
+      <h2>Contactez-moi</h2>
+      <label for="name">Nom :</label>
+      <input type="text" id="name" name="name" required placeholder="Votre nom" />
+
+      <label for="subject">Sujet :</label>
+      <input type="text" id="subject" name="subject" required placeholder="Sujet du message" />
+
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
+
+  <div class="contact-info">
+    <p>Lucas Charlé © 2025</p>
+  </div>
+
+</body>
+</html>
