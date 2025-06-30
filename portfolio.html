@@ -100,72 +100,6 @@
       transform: scale(1.05);
     }
 
-    /* Style du carrousel */
-    .carousel-container {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      max-width: 900px;
-      margin: 40px auto;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Images du carrousel */
-    .carousel-images {
-      display: flex;
-      transition: transform 0.6s ease;
-    }
-
-    .carousel-images img {
-      flex: 0 0 100%;
-      width: 100%;
-      height: 500px;
-      object-fit: cover;
-    }
-
-    /* Flèches de navigation */
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.6);
-      border: none;
-      color: white;
-      font-size: 2rem;
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 50%;
-      z-index: 10;
-    }
-
-    .arrow-left {
-      left: 15px;
-    }
-
-    .arrow-right {
-      right: 15px;
-    }
-
-    /* Points indicateurs du carrousel */
-    .dots {
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .dot {
-      height: 12px;
-      width: 12px;
-      margin: 5px;
-      background-color: #bbb;
-      border-radius: 50%;
-      display: inline-block;
-      cursor: pointer;
-    }
-
-    .active {
-      background-color: #333;
-    }
-
     /* Bouton de lien vers le site UIMM */
     .link-button {
       display: inline-block;
@@ -209,7 +143,7 @@
     <p>Lors de cette expérience, l’objectif était de simuler une attaque par force brute. Une attaque par force brute consiste à tester toutes les combinaisons possibles pour deviner un mot de passe. Nous avons utilisé un script Python qui a testé automatiquement des combinaisons jusqu’à trouver le mot de passe "secret123". Cette simulation m’a permis de mieux comprendre les enjeux de sécurité informatique.</p>
   </div>
 
-  <!-- Bloc Compétences (fixe) -->
+  <!-- Bloc Compétences -->
   <div class="content">
     <h4>Compétences</h4>
     <div class="skills">
@@ -219,65 +153,6 @@
       <span class="skill-badge">Déterminé</span>
     </div>
   </div>
-
-  <!-- Carrousel d'images -->
-  <div class="carousel-container">
-    <div class="carousel-images">
-      <img src="https://uimm.lafabriquedelavenir.fr/wp-content/uploads/2018/08/HeaderSite-1920x1080-2.png" alt="UIMM 1" />
-      <img src="https://uimm.lafabriquedelavenir.fr/wp-content/themes/uimm/assets/img/tiers1.jpg" alt="UIMM 2" />
-      <img src="https://www.formation-industrie.bzh/images/medias/Manager_dequipe_industrielle_2_AdobeStock_388012616.jpeg" alt="UIMM 3" />
-      <img src="https://www.fabacademy-pdl.fr/sites/fab_academy/files/styles/w1920_extra_wide/public/media/images/Img092%20-AFPI-%20Chaudronnerie%20%C2%A9ymla44.jpg?itok=RYKdpOzI" alt="UIMM 4" />
-    </div>
-
-    <!-- Flèches gauche/droite -->
-    <button class="arrow arrow-left">&#10094;</button>
-    <button class="arrow arrow-right">&#10095;</button>
-
-    <!-- Points indicateurs -->
-    <div class="dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
-  </div>
-
-  <!-- Script pour le carrousel -->
-  <script>
-    const carouselImages = document.querySelector('.carousel-images');
-    const images = document.querySelectorAll('.carousel-images img');
-    const dots = document.querySelectorAll('.dot');
-    const arrowLeft = document.querySelector('.arrow-left');
-    const arrowRight = document.querySelector('.arrow-right');
-    let index = 0; // Position actuelle
-
-    // Met à jour l'image visible et les points actifs
-    function updateCarousel() {
-      carouselImages.style.transform = `translateX(${-index * 100}%)`;
-      dots.forEach(dot => dot.classList.remove('active'));
-      dots[index].classList.add('active');
-    }
-
-    // Bouton flèche droite : image suivante
-    arrowRight.addEventListener('click', () => {
-      index = (index + 1) % images.length;
-      updateCarousel();
-    });
-
-    // Bouton flèche gauche : image précédente
-    arrowLeft.addEventListener('click', () => {
-      index = (index - 1 + images.length) % images.length;
-      updateCarousel();
-    });
-
-    // Clique sur un point pour aller à l'image correspondante
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-        index = i;
-        updateCarousel();
-      });
-    });
-  </script>
 
   <!-- Lien vers le site UIMM -->
   <p style="text-align: center;">
