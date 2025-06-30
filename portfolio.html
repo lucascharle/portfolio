@@ -4,17 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CV Lucas Charlé</title>
+
+  <!-- Import de la police Google Fonts Roboto -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Icône de l'onglet -->
   <link rel="icon" href="https://github.com/lucascharle/portfolio/blob/main/logo%20uimm.png?raw=true" type="image/png" />
 
   <style>
+    /* Réinitialisation du box-sizing et suppression des marges/paddings par défaut */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    /* Style global du corps de la page */
     body {
       font-family: 'Roboto', sans-serif;
       background: linear-gradient(to right, #e8e8e8, #f5f5f5);
@@ -23,21 +29,25 @@
       padding: 20px;
     }
 
+    /* Titres centrés */
     h1, h4 {
       text-align: center;
       margin-bottom: 20px;
     }
 
+    /* Style du nom */
     h1 {
       font-size: 3em;
       color: #c62828;
     }
 
+    /* Sous-titres */
     h4 {
       font-size: 1.8em;
       color: #444;
     }
 
+    /* Conteneur pour le logo */
     .logo-container {
       display: flex;
       justify-content: center;
@@ -49,6 +59,7 @@
       height: auto;
     }
 
+    /* Boîtes de contenu principales */
     .content {
       background-color: #fff;
       padding: 40px;
@@ -64,7 +75,7 @@
       text-align: justify;
     }
 
-    /* Compétences en badges */
+    /* Style des compétences sous forme de badges */
     .skills {
       display: flex;
       flex-wrap: wrap;
@@ -89,7 +100,7 @@
       transform: scale(1.05);
     }
 
-    /* Carousel */
+    /* Style du carrousel */
     .carousel-container {
       position: relative;
       overflow: hidden;
@@ -99,6 +110,7 @@
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     }
 
+    /* Images du carrousel */
     .carousel-images {
       display: flex;
       transition: transform 0.6s ease;
@@ -111,6 +123,7 @@
       object-fit: cover;
     }
 
+    /* Flèches de navigation */
     .arrow {
       position: absolute;
       top: 50%;
@@ -133,6 +146,7 @@
       right: 15px;
     }
 
+    /* Points indicateurs du carrousel */
     .dots {
       text-align: center;
       margin-top: 10px;
@@ -152,7 +166,7 @@
       background-color: #333;
     }
 
-    /* Lien vers UIMM */
+    /* Bouton de lien vers le site UIMM */
     .link-button {
       display: inline-block;
       margin: 30px auto;
@@ -173,52 +187,32 @@
   </style>
 </head>
 
-<script>
-if (username === 'lucas' && password === 'test') {
-  sessionStorage.setItem('authenticated', 'true');
-  window.location.href = 'portfilio.html';
-}
-</script>
-
 <body>
 
+  <!-- Logo UIMM centré -->
   <div class="logo-container">
     <img src="https://github.com/lucascharle/portfolio/blob/main/logo%20uimm.png?raw=true" alt="Logo UIMM" />
   </div>
 
+  <!-- Nom principal -->
   <h1>Lucas Charlé</h1>
 
+  <!-- Bloc À propos -->
   <div class="content">
     <h4>À propos de moi</h4>
     <p>Je suis une personne bienveillante et à l’écoute des autres. Je suis passionné par les nouvelles technologies et la cybersécurité. Toujours motivé à apprendre et à évoluer, je me forme chaque jour pour devenir un professionnel qualifié dans mon domaine.</p>
   </div>
 
+  <!-- Bloc Expérience -->
   <div class="content">
     <h4>Expérience</h4>
     <p>Lors de cette expérience, l’objectif était de simuler une attaque par force brute. Une attaque par force brute consiste à tester toutes les combinaisons possibles pour deviner un mot de passe. Nous avons utilisé un script Python qui a testé automatiquement des combinaisons jusqu’à trouver le mot de passe "secret123". Cette simulation m’a permis de mieux comprendre les enjeux de sécurité informatique.</p>
   </div>
 
+  <!-- Bloc Compétences (fixe) -->
   <div class="content">
     <h4>Compétences</h4>
-
-    <!-- Bouton Éditer -->
-    <div style="text-align: center; margin-bottom: 15px;">
-      <button id="edit-skills-btn" style="padding: 10px 20px; border-radius: 30px; background-color: #c62828; color: white; font-weight: bold; border: none; cursor: pointer;">
-        Éditer
-      </button>
-    </div>
-
-    <!-- Formulaire d'édition (masqué par défaut) -->
-    <div id="edit-form" style="display: none; text-align: center; margin-bottom: 20px;">
-      <textarea id="skills-input" rows="3" style="width: 80%; padding: 10px; border-radius: 8px; font-size: 1em;">Sérieux, Motivé, À l'écoute, Déterminé</textarea>
-      <br />
-      <button id="save-skills-btn" style="margin-top: 10px; padding: 8px 20px; border-radius: 20px; background-color: #424242; color: white; border: none; cursor: pointer;">
-        Sauvegarder
-      </button>
-    </div>
-
-    <!-- Liste des compétences -->
-    <div class="skills" id="skills-list">
+    <div class="skills">
       <span class="skill-badge">Sérieux</span>
       <span class="skill-badge">Motivé</span>
       <span class="skill-badge">À l'écoute</span>
@@ -226,25 +220,7 @@ if (username === 'lucas' && password === 'test') {
     </div>
   </div>
 
-  <!-- Script JavaScript pour gérer l'édition -->
-  <script>
-    const editBtn = document.getElementById('edit-skills-btn');
-    const editForm = document.getElementById('edit-form');
-    const saveBtn = document.getElementById('save-skills-btn');
-    const input = document.getElementById('skills-input');
-    const skillList = document.getElementById('skills-list');
-
-    editBtn.addEventListener('click', () => {
-      editForm.style.display = editForm.style.display === 'none' ? 'block' : 'none';
-    });
-
-    saveBtn.addEventListener('click', () => {
-      const skills = input.value.split(',').map(s => s.trim()).filter(Boolean);
-      skillList.innerHTML = skills.map(skill => `<span class="skill-badge">${skill}</span>`).join('');
-      editForm.style.display = 'none';
-    });
-  </script>
-
+  <!-- Carrousel d'images -->
   <div class="carousel-container">
     <div class="carousel-images">
       <img src="https://uimm.lafabriquedelavenir.fr/wp-content/uploads/2018/08/HeaderSite-1920x1080-2.png" alt="UIMM 1" />
@@ -252,8 +228,12 @@ if (username === 'lucas' && password === 'test') {
       <img src="https://www.formation-industrie.bzh/images/medias/Manager_dequipe_industrielle_2_AdobeStock_388012616.jpeg" alt="UIMM 3" />
       <img src="https://www.fabacademy-pdl.fr/sites/fab_academy/files/styles/w1920_extra_wide/public/media/images/Img092%20-AFPI-%20Chaudronnerie%20%C2%A9ymla44.jpg?itok=RYKdpOzI" alt="UIMM 4" />
     </div>
+
+    <!-- Flèches gauche/droite -->
     <button class="arrow arrow-left">&#10094;</button>
     <button class="arrow arrow-right">&#10095;</button>
+
+    <!-- Points indicateurs -->
     <div class="dots">
       <span class="dot active"></span>
       <span class="dot"></span>
@@ -262,30 +242,35 @@ if (username === 'lucas' && password === 'test') {
     </div>
   </div>
 
+  <!-- Script pour le carrousel -->
   <script>
     const carouselImages = document.querySelector('.carousel-images');
     const images = document.querySelectorAll('.carousel-images img');
     const dots = document.querySelectorAll('.dot');
     const arrowLeft = document.querySelector('.arrow-left');
     const arrowRight = document.querySelector('.arrow-right');
-    let index = 0;
+    let index = 0; // Position actuelle
 
+    // Met à jour l'image visible et les points actifs
     function updateCarousel() {
       carouselImages.style.transform = `translateX(${-index * 100}%)`;
       dots.forEach(dot => dot.classList.remove('active'));
       dots[index].classList.add('active');
     }
 
+    // Bouton flèche droite : image suivante
     arrowRight.addEventListener('click', () => {
       index = (index + 1) % images.length;
       updateCarousel();
     });
 
+    // Bouton flèche gauche : image précédente
     arrowLeft.addEventListener('click', () => {
       index = (index - 1 + images.length) % images.length;
       updateCarousel();
     });
 
+    // Clique sur un point pour aller à l'image correspondante
     dots.forEach((dot, i) => {
       dot.addEventListener('click', () => {
         index = i;
@@ -294,10 +279,12 @@ if (username === 'lucas' && password === 'test') {
     });
   </script>
 
+  <!-- Lien vers le site UIMM -->
   <p style="text-align: center;">
     <a class="link-button" href="https://formation-industries-ca.fr/" target="_blank">Centre de formation UIMM</a>
   </p>
 
+  <!-- Infos de bas de page -->
   <div class="contact-info">
     <p>Lucas Charlé © 2025</p>
   </div>
