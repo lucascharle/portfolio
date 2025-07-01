@@ -1,3 +1,51 @@
+<?php
+// Connexion BDD basique
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "portfolio";
+
+// Connexion
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Si base non créée, on la crée
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+$conn->query("CREATE DATABASE IF NOT EXISTS $dbname");
+$conn->select_db($dbname);
+
+// Création table skills si elle n'existe pas
+$conn->query("CREATE TABLE IF NOT EXISTS skills (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL
+)");
+
+// Remplissage initial si vide
+$result = $conn->query("SELECT COUNT(*) as total FROM skills");
+$row = $result->fetch_assoc();
+if ($row['total'] == 0) {
+  $conn->query("INSERT INTO skills (name) VALUES 
+  ('Sérieux'), ('Motivé'), ('À l\'écoute'), ('Déterminé')");
+}
+
+// Ajouter une compétence
+if (isset($_POST['add_skill'])) {
+  $newSkill = trim($_POST['skill_name']);
+  if ($newSkill !== '') {
+    $stmt = $conn->prepare("INSERT INTO skills (name) VALUES (?)");
+    $stmt->bind_param("s", $newSkill);
+    $stmt->execute();
+    $stmt->close();
+  }
+}
+
+// Supprimer une compétence
+if (isset($_GET['delete'])) {
+  $idToDelete = intval($_GET['delete']);
+  $conn->query("DELETE FROM skills WHERE id = $idToDelete");
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -144,23 +192,26 @@
   <!-- Expérience -->
   <div class="content">
     <h4>Expérience</h4>
-    <p>Lors de cette expérience, l’objectif était de simuler une attaque par force brute. Une attaque par force brute teste toutes les combinaisons possibles pour deviner un mot de passe. Un script Python a testé des combinaisons jusqu’à trouver "secret123". Cette simulation m’a permis de mieux comprendre la sécurité informatique.</p>
+    <p>Lors de cette expérience, l’objectif était de <span class="degueu">simuler une attaque</span> par force brute. Une attaque par force brute teste toutes les combinaisons possibles pour deviner un mot de passe. Un script Python a testé des combinaisons jusqu’à trouver "secret123". Cette simulation m’a permis de mieux comprendre la sécurité informatique.</p>
   </div>
 
   <!-- Compétences -->
   <div class="content">
     <h4>Compétences</h4>
     <div class="skills">
-      <span class="skill-badge">Sérieux <a href="#">X</a></span>
-      <span class="skill-badge">Motivé <a href="#">X</a></span>
-      <span class="skill-badge">À l'écoute <a href="#">X</a></span>
-      <span class="skill-badge">Déterminé <a href="#">X</a></span>
+      <?php
+        $result = $conn->query("SELECT * FROM skills");
+        while ($row = $result->fetch_assoc()) {
+          echo "<span class='skill-badge'>" . htmlspecialchars($row['name']) . 
+          " <a href='?delete=" . $row['id'] . "'>X</a></span>";
+        }
+      ?>
     </div>
 
     <!-- Formulaire pour ajouter -->
-    <form>
-      <input type="text" placeholder="Nouvelle compétence" required>
-      <input type="submit" value="Ajouter">
+    <form method="POST">
+      <input type="text" name="skill_name" placeholder="Nouvelle compétence" required>
+      <input type="submit" name="add_skill" value="Ajouter">
     </form>
   </div>
 
@@ -176,3 +227,4 @@
 
 </body>
 </html>
+<?php $conn->close(); ?>
